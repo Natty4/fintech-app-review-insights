@@ -31,7 +31,10 @@ def balance_reviews(df, target_count=400):
     )
     return balanced_df
 
-
+def report_balance(df):
+    counts = df['bank'].value_counts()
+    print("\n📊 Review count per bank after balancing:")
+    print(counts.to_string())
 
 def save_cleaned_data(df, output_path):
     df.to_csv(output_path, index=False)
@@ -45,3 +48,4 @@ if __name__ == "__main__":
     df_clean = clean_reviews(df_raw)
     df_balanced = balance_reviews(df_clean, target_count=400)
     save_cleaned_data(df_balanced, clean_path)
+    report_balance(df_balanced)
