@@ -24,12 +24,14 @@ def clean_reviews(df):
 def balance_reviews(df, target_count=400):
     balanced_df = (
         pd.concat([
-            group.sample(n=target_count, random_state=42)
+            group.sample(n=min(len(group), target_count), random_state=42)
             for _, group in df.groupby('bank')
         ])
         .reset_index(drop=True)
     )
     return balanced_df
+
+
 
 def save_cleaned_data(df, output_path):
     df.to_csv(output_path, index=False)
