@@ -3,7 +3,7 @@ from google_play_scraper import Sort, reviews
 from datetime import datetime
 import os
 import sys, pathlib
-# Ensure the script can find the parent directory
+
 sys.path.append(str(pathlib.Path(__file__).resolve().parent.parent))
 
 def fetch_reviews(app_id, bank_name, lang='en', count=520):
@@ -12,7 +12,7 @@ def fetch_reviews(app_id, bank_name, lang='en', count=520):
         result, _ = reviews(
             app_id,
             lang=lang,
-            country='et',  # use 'us' or 'et' depending on need
+            country='et', 
             sort=Sort.NEWEST,
             count=count
         )
@@ -46,6 +46,6 @@ if __name__ == "__main__":
     all_reviews_df = pd.concat(all_dfs, ignore_index=True)
     all_reviews_df.drop_duplicates(subset=["review", "bank"], inplace=True)
 
-    os.makedirs("../data", exist_ok=True)
+    os.makedirs("./data", exist_ok=True)
     all_reviews_df.to_csv("./data/raw_reviews.csv", index=False)
     print(f"Saved {len(all_reviews_df)} total reviews to data/raw_reviews.csv")
