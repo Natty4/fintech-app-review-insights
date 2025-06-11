@@ -7,7 +7,7 @@ transformers
 hf-xet
 deep-translator
 langid
-langdetect
 scikit-learn
 nltk
 spacy
+psycopg2-binary

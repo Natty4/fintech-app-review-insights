@@ -1,9 +1,6 @@
-from langdetect import detect, DetectorFactory, LangDetectException
 from deep_translator import GoogleTranslator
 import langid
-
-# Ensure consistent language detection
-DetectorFactory.seed = 42
+   
 
 def detect_language(text):
     """
@@ -33,3 +30,8 @@ def translate_review_if_needed(text):
 def translate_reviews_inplace(df, review_column='review'):
     df[review_column] = df[review_column].apply(translate_review_if_needed)
     return df
+
+
+
+
+
