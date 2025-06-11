@@ -1,3 +1,11 @@
 pandas
 google-play-scraper
 pytest
+tqdm
+torch
+transformers
+hf-xet
+deep-translator
+langid
+scikit-learn
+nltk
